@@ -1,0 +1,69 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/AvenirLTProBlack.ttf",
+      "sha1": "cf29c7e83bc34ae60614f9af3701b83fd02b0b36"
+    },
+    {
+      "path": "assets/fonts/AvenirLTProBlackOblique.ttf",
+      "sha1": "daa5e6840054148c23d08f29942f2c27a4f85883"
+    },
+    {
+      "path": "assets/fonts/AvenirLTProBook.ttf",
+      "sha1": "cdf1f19aba250cbaec59c39ee549dc15e643397f"
+    },
+    {
+      "path": "assets/fonts/AvenirLTProBookOblique.ttf",
+      "sha1": "ec9666774ac2acc233f0d18193e30c775feb7925"
+    },
+    {
+      "path": "assets/fonts/AvenirLTProHeavy.ttf",
+      "sha1": "3ec26c4e49ba066ae290ef217bd622a8095ca4ac"
+    },
+    {
+      "path": "assets/fonts/AvenirLTProHeavyOblique.ttf",
+      "sha1": "33b7202af4982140cd9c3b456b3043f71945ee51"
+    },
+    {
+      "path": "assets/fonts/AvenirLTProLight.ttf",
+      "sha1": "00b132e0f7669ac4684c870a72af73886f3319ba"
+    },
+    {
+      "path": "assets/fonts/AvenirNextLTPro-Bold.ttf",
+      "sha1": "460b7537e4c55f612c7c19e647a82dca98d4def2"
+    },
+    {
+      "path": "assets/fonts/AvenirNextLTPro-BoldCn.ttf",
+      "sha1": "554a3bd71c2bbdadbea8c5af537261ae257f75e2"
+    },
+    {
+      "path": "assets/fonts/AvenirNextLTPro-Demi.ttf",
+      "sha1": "fdc036ced35e35c188d0362a3305f9fa48b03702"
+    },
+    {
+      "path": "assets/fonts/AvenirNextLTPro-DemiCn.ttf",
+      "sha1": "cf899940610ca1de0def9395779701c3ed6701d4"
+    },
+    {
+      "path": "assets/fonts/AvenirNextLTPro-It.ttf",
+      "sha1": "901f3028ac0cca1e3b5239e547a482300dc48fc9"
+    },
+    {
+      "path": "assets/fonts/AvenirNextLTPro-Regular.ttf",
+      "sha1": "adf27d93587cb3d4cb5c55dfa982c80df11b907f"
+    },
+    {
+      "path": "assets/fonts/Cairo-Black.ttf",
+      "sha1": "b514216296da7cdcb95c2823bf63683fc3dde8ac"
+    },
+    {
+      "path": "assets/fonts/Cairo-Bold.ttf",
+      "sha1": "b365ba7df32303352181eb0e15b8644de4c72cc7"
+    },
+    {
+      "path": "assets/fonts/Cairo-ExtraBold.ttf",
+      "sha1": "9c22abe4150faa0d398274f8e51e73927dcf254e"
+    }
+  ]
+}

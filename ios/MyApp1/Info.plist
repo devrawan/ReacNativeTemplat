@@ -2,6 +2,41 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>SimpleLineIcons.ttf</string>
+		<string>Zocial.ttf</string>
+		<string>MaterialCommunityIcons.ttf</string>
+		<string>MaterialIcons.ttf</string>
+		<string>Octicons.ttf</string>
+		<string>Entypo.ttf</string>
+		<string>AntDesign.ttf</string>
+		<string>EvilIcons.ttf</string>
+		<string>Feather.ttf</string>
+		<string>FontAwesome.ttf</string>
+		<string>FontAwesome5_Brands.ttf</string>
+		<string>FontAwesome5_Regular.ttf</string>
+		<string>FontAwesome5_Solid.ttf</string>
+		<string>Fontisto.ttf</string>
+		<string>Foundation.ttf</string>
+		<string>Ionicons.ttf</string>
+		<string>AvenirLTProBlack.ttf</string>
+		<string>AvenirLTProBlackOblique.ttf</string>
+		<string>AvenirLTProBook.ttf</string>
+		<string>AvenirLTProBookOblique.ttf</string>
+		<string>AvenirLTProHeavy.ttf</string>
+		<string>AvenirLTProHeavyOblique.ttf</string>
+		<string>AvenirLTProLight.ttf</string>
+		<string>AvenirNextLTPro-Bold.ttf</string>
+		<string>AvenirNextLTPro-BoldCn.ttf</string>
+		<string>AvenirNextLTPro-Demi.ttf</string>
+		<string>AvenirNextLTPro-DemiCn.ttf</string>
+		<string>AvenirNextLTPro-It.ttf</string>
+		<string>AvenirNextLTPro-Regular.ttf</string>
+		<string>Cairo-Black.ttf</string>
+		<string>Cairo-Bold.ttf</string>
+		<string>Cairo-ExtraBold.ttf</string>
+	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -36,7 +71,7 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
