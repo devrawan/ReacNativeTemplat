@@ -1,7 +1,9 @@
 import React ,{useState}from "react";
+
 const AppContext = React.createContext();
 
 export const AppProvider =({children})=>{
+
 const[MovieData,setMovieData] =useState([
     {
         id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
@@ -69,12 +71,40 @@ const[MovieData,setMovieData] =useState([
         category:'Cartoon',
         like:false
       },
-])
-return(
-    <AppContext.Provider value={{MovieData,setMovieData}} >
-{children}
-    </AppContext.Provider>
-)
+]);
+
+const toggleLike =(id)=>{
+    let tempArr = [...MovieData];  
+    let index = tempArr.findIndex(el => el.id == id);
+    tempArr[index].like = !tempArr[index].like; 
+    setMovieData(tempArr)                 
+    console.log(tempArr);
+ }; 
+
+  const handleSav = id => {
+  let tempArr = [...MovieData];
+  let index = tempArr.findIndex(el => el.id == id);
+  tempArr[index].saved = !tempArr[index].saved;
+  setMovieData(tempArr);
+  console.log(tempArr);
+};
+//
+  const deleteFromFav =(item)=>{
+  let tempArr = [...MovieData];
+  let index = tempArr.findIndex(el => el.id == item.id);
+  tempArr[index].saved = !tempArr[index].saved;
+  setMovieData(tempArr);
+  console.log(tempArr);
 }
+
+ return(
+    <AppContext.Provider value={{MovieData,setMovieData,toggleLike,handleSav,deleteFromFav}} >
+    {children}
+    </AppContext.Provider>
+  )
+
+}
+
+
 
 export default AppContext;

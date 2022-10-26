@@ -1,4 +1,3 @@
-//MainScreen
 import React, {useContext, useEffect} from 'react';
 import {
   TouchableOpacity,
@@ -17,32 +16,17 @@ import {useTheme, useNavigation} from '@react-navigation/native';
 import Feather from 'react-native-vector-icons/Feather';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import AppContext from '../../context/AppContext';
+import AppContext from '../context/AppContext';
 
-const FavScreen = () => {
-  const {colors, dark} = useTheme();
-  const {width, height} = useWindowDimensions();
-  const navigation = useNavigation();
-  const {counter, setCounter} = useContext(AppContext);
-  const {MovieData, setMovieData} = useContext(AppContext);
-
-  const handleLike = id => {
-    let tempArr = [...MovieData];
-    let index = tempArr.findIndex(el => el.id == id);
-    tempArr[index].like = !tempArr[index].like;
-    setMovieData(tempArr);
-    console.log(tempArr);
-  };
-
-  const RenderItemm = ({item}) => (
-    <TouchableOpacity
-      onPress={() => {
-        let tempArr = [...MovieData];
-        let index = tempArr.findIndex(el => el.id == item.id);
-        tempArr[index].saved = !tempArr[index].saved;
-        setMovieData(tempArr);
-        console.log(tempArr);
-      }}
+const FavCard =({item})=>{
+    const {colors, dark} = useTheme();
+    const {width, height} = useWindowDimensions();
+    const navigation = useNavigation();
+    const {MovieData, setMovieData,toggleLike,deleteFromFav} = useContext(AppContext);
+    
+    
+    return(<TouchableOpacity
+      onPress={() => {deleteFromFav(item)}}
       style={{flexDirection: 'row', width: '100%'}}>
       <View style={{width: '40%'}}>
         <Image
@@ -112,7 +96,7 @@ const FavScreen = () => {
         <View
           style={{flexDirection: 'row', paddingBottom: 5, paddingVertical: 5}}>
           <AntDesign
-            onPress={() => handleLike(item.id)}
+            onPress={() => toggleLike(item.id)}
             name="heart"
             size={17}
             color={item.like ? 'red' : 'white'}
@@ -124,50 +108,6 @@ const FavScreen = () => {
         </View>
       </View>
     </TouchableOpacity>
-  );
-
-  return (
-    <View
-      style={[
-        styles.cont,
-        {height: height, width: width, backgroundColor: colors.background},
-      ]}>
-      <View
-        style={{
-          alignSelf: 'center',
-          flexDirection: 'row',
-          width: '100%',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          paddingHorizontal: 20,
-          paddingVertical: 10,
-          paddingEnd: 25,
-          marginBottom: 20,
-        }}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-          <AntDesign name="left" color={colors.text} size={22} />
-        </TouchableOpacity>
-        <Text style={{color: colors.text, fontSize: 17}}>Saved List </Text>
-        <TouchableOpacity>
-        </TouchableOpacity>
-      </View>
-
-      <ScrollView
-        style={{paddingStart: 30,paddingVertical:10,paddingBottom:20}}
-        showsVerticalScrollIndicator={false}>
-        {MovieData.filter(item => item.saved == true).map(MovItem => (
-          <RenderItemm key={MovItem.id} item={MovItem} />
-        ))}
-      </ScrollView>
-    </View>
-  );
-};
-
-const styles = StyleSheet.create({
-  cont: {
-    flex: 1,
-    marginTop: 55,
-  },
-});
-
-export default FavScreen;
+    )
+}
+export default FavCard;

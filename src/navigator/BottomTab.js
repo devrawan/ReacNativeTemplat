@@ -7,16 +7,18 @@ import {
   useWindowDimensions,
 } from 'react-native';
 import HomeStack from '../features/home/navigator/HomeStack';
-import FavScreen from '../features/favorite/FavScreen';
+import FavScreen from '../features/favorite/screens/FavScreen';
 import ProfileScreen from '../features/profile/screens/ProfileScreen';
 import { NavigationContainer } from '@react-navigation/native';
 // import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialIcons from 'react-native-vector-icons/Entypo';
 import { FontFamily } from '../utils/thems';
-import { useColorScheme } from 'react-native';
+
 import { DarkValues, LightValues} from '../utils/thems';
+import { useColorScheme } from 'react-native';
 import {useTheme} from "@react-navigation/native";
 import { AppProvider } from '../context/AppContext';
+import ProStack from '../features/profile/navigator/ProStack';
 
 
 
@@ -27,20 +29,20 @@ const BottomTab =()  => {
 
 
   return (
-    <AppProvider>
-    <NavigationContainer theme={scheme === 'dark' ? DarkValues : LightValues}>
+    // <AppProvider>
+    // <NavigationContainer theme={scheme === 'dark' ? DarkValues : LightValues}>
     <Tab.Navigator
       initialRouteName="HomeStack"
       screenOptions={({route}) => ({
         tabBarShowLabel:false,
         tabBarStyle:{
-flexDirection:'row',
-justifyContent:'center',
-borderTopWidth:1,
-borderTopColor:'#0296E5',
+          flexDirection:'row',
+          justifyContent:'center',
+          borderTopWidth:1,
+          borderTopColor:'#0296E5',
 
-zIndex:1
-        },
+          zIndex:1
+                  },
         tabBarIcon: ({focused, color}) => {
           let iconName;
           let txt;
@@ -51,7 +53,7 @@ zIndex:1
           } else if (route.name === 'FavScreen') {
             iconName = focused ? 'save' : 'save';
             txt = 'Saved';
-          } else if (route.name === 'ProfileScreen') {
+          } else if (route.name === 'ProfileScreenn') {
             iconName = focused ? 'user' : 'user';
             txt = 'Profile';
           }
@@ -79,15 +81,16 @@ zIndex:1
           );
         },
       })}
-    
       >
       <Tab.Screen name="HomeStack" component={HomeStack} options={{headerShown:false}} />
       <Tab.Screen name="FavScreen" component={FavScreen} options={{headerShown:false}} />
-      <Tab.Screen name="ProfileScreen" component={ProfileScreen} options={{headerShown:false}} />
+      <Tab.Screen name="ProfileScreenn" component={ProfileScreen} options={{headerShown:false}} />
 
     </Tab.Navigator>
-    </NavigationContainer>
-    </AppProvider>
+
+    // {/* </NavigationContainer>
+    // </AppProvider> */}
+
   );
 }
 export default BottomTab;
