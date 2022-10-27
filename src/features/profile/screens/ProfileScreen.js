@@ -21,6 +21,7 @@ const ProfileScreen = () => {
   const {colors, dark} = useTheme();
   const {width, height} = useWindowDimensions();
   const navigation = useNavigation();
+  const {handleLogOut,currentUser}=useContext(AppContext)
   return (
     <View
     style={[
@@ -35,7 +36,12 @@ const ProfileScreen = () => {
      <View style={{width:width,paddingHorizontal:20,paddingVertical:10}}>
 
      
-     <TouchableOpacity onPress={()=>navigation.replace('auth')}  style={{width:"100%",backgroundColor:'white',height:50,justifyContent:'center',marginBottom:10,paddingStart:5,borderRadius:10}}>
+     <TouchableOpacity onPress={()=>{
+      handleLogOut();
+      console.log(currentUser)
+     navigation.replace('auth')
+     }
+    }  style={{width:"100%",backgroundColor:'white',height:50,justifyContent:'center',marginBottom:10,paddingStart:5,borderRadius:10}}>
      <Text>LogOut</Text>
      </TouchableOpacity> 
      </View>

@@ -1,5 +1,5 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import React ,{useState,useMemo,createContext} from 'react';
+import React ,{useState,useMemo,createContext,useEffect,useContext} from 'react';
 const Tab = createBottomTabNavigator();
 import {
   View,
@@ -13,21 +13,44 @@ import { NavigationContainer } from '@react-navigation/native';
 // import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialIcons from 'react-native-vector-icons/Entypo';
 import { FontFamily } from '../utils/thems';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { DarkValues, LightValues} from '../utils/thems';
 import { useColorScheme } from 'react-native';
 import {useTheme} from "@react-navigation/native";
-import { AppProvider } from '../context/AppContext';
 import ProStack from '../features/profile/navigator/ProStack';
-
+import AppContext from '../context/AppContext';
+import {useNavigation} from '@react-navigation/native';
 
 
 
 const BottomTab =()  => {
   const scheme = useColorScheme();
   const { colors, dark } = useTheme();
+  const {currentUser} = useContext(AppContext);
+  const navigation = useNavigation();
 
+  const getData = async () => {
+    try {
+      const jsonValue = await AsyncStorage.getItem('Token')
+      console.log("asyncStorage ")
+      console.log(jsonValue)
+      return jsonValue != null ? JSON.parse(jsonValue) : null;
 
+    } catch(e) {
+      // error reading value
+    }
+  }
+
+useEffect(()=>{
+if(currentUser == null){
+  console.log(currentUser)
+  // navigation.replace('auth')
+}else{
+  getData();
+  // console.log(currentUser)
+}
+
+},[1])
   return (
     // <AppProvider>
     // <NavigationContainer theme={scheme === 'dark' ? DarkValues : LightValues}>

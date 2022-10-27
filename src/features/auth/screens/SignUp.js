@@ -17,7 +17,7 @@ import {useTheme, useNavigation} from '@react-navigation/native';
 import AppContext from '../../../context/AppContext';
 import axios from 'react-native-axios';
 import Icn from 'react-native-vector-icons/Entypo';
-
+// users,setUsers
 const SignUp = () => {
   const {colors, dark} = useTheme();
   const {width, height} = useWindowDimensions();
@@ -30,7 +30,7 @@ const SignUp = () => {
   const [checkValidEmail, setCheckValidEmail] = useState(false);
   const [checkValidPass, setCheckValidPass] = useState(true);
   const [errorType, setErrorType] = useState(null);
-
+const {users,setUsers} =  useContext(AppContext);
   const handleCheckEmail = text => {
     let re = /\S+@\S+\.\S+/;
     let regex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
@@ -106,8 +106,20 @@ const SignUp = () => {
       })
 
       .then(function (response) {
-        console.log(response.data);
+        // console.log(response.data.data.token);
+        let result  = response.data.data; 
+        var newUser = {
+          id: `${response.data.data.id}`,
+          name:`${response.data.data.name}`,
+          email:`${response.data.data.email}`,
+          image:`${response.data.data.image}`,
+          user_token:`${response.data.data.token}`,
+          phone:`${response.data.data.phone}`
+        }
+        setUsers([...users,{...newUser}])
+        navigation.navigate('Login')
       })
+      
       .catch(function (error) {
         console.log(error);
       });

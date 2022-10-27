@@ -1,5 +1,5 @@
 import 'react-native-gesture-handler';
-import React ,{useState,useMemo,createContext} from 'react';
+import React ,{useState,useMemo,createContext,useContext} from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -21,12 +21,19 @@ const HomeStackk = createStackNavigator();
 const App = () => {
   const scheme = useColorScheme();
   const { colors, dark } = useTheme();
+
+
   return (  
     <AppProvider>
     <NavigationContainer theme={scheme === 'dark' ? DarkValues : LightValues}>
     <HomeStackk.Navigator>
-        <HomeStackk.Screen name="Home" component={BottomTab}  options={{headerShown:false}}/>
+{/* {currentUser.currentUser.token == "T8cApkdTVFDIUBe5Gl3toyYECV03ZBESuyoGpSrdq74Q6K7uI6siF38TjvNk40E2v3awcB"
+?<HomeStackk.Screen name="Home" component={BottomTab}  options={{headerShown:false}}/>
+:<HomeStackk.Screen name="auth" component={AuthStack} options={{headerShown:false}} />
+} */}
+      <HomeStackk.Screen name="Home" component={BottomTab}  options={{headerShown:false}}/>
        <HomeStackk.Screen name="auth" component={AuthStack} options={{headerShown:false}} />
+      
       </HomeStackk.Navigator>
     </NavigationContainer>
    </AppProvider>

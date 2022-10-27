@@ -1,5 +1,5 @@
 // import AsyncStorage from '@react-native-async-storage/async-storage';
-import React, {useState} from 'react';
+import React, {useState,useContext} from 'react';
 import {
   Image,
   StyleSheet,
@@ -13,13 +13,16 @@ import {
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Icn from 'react-native-vector-icons/Entypo';
 import axios from 'react-native-axios';
+import AppContext from '../../../context/AppContext';
 
 const Login = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [seePassword, setSeePassword] = useState(true);
   const [checkValidEmail, setCheckValidEmail] = useState(false);
+  const {users,setUsers,currentUser,setCurrentUser,handleCurrentUser} =  useContext(AppContext);
 
+  
   const handleCheckEmail = text => {
     let re = /\S+@\S+\.\S+/;
     let regex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
@@ -33,16 +36,29 @@ const Login = ({navigation}) => {
   };
 
   const handleLogin = () => {
+// console.log(users);
     axios
       .post('https://student.valuxapps.com/api/login', {
         email: `${email}`,
         password: `${password}`,
       })
       .then(function (response) {
-        console.log(response.data);
+        // console.log(response.data)
         if (response.data.status == true) {
+          let result  = response.data.data; 
+          var newUser = {
+            id: `${response.data.data.id}`,
+            name:`${response.data.data.name}`,
+            email:`${response.data.data.email}`,
+            image:`${response.data.data.image}`,
+            user_token:`${response.data.data.token}`,
+            phone:`${response.data.data.phone}`
+          }
+          
+          handleCurrentUser(newUser);
           navigation.navigate('Home');
         }
+       //console.log("current user ");
       })
       .catch(function (error) {
         console.log(error);

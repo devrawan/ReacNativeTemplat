@@ -1,8 +1,26 @@
 import React ,{useState}from "react";
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 const AppContext = React.createContext();
 
 export const AppProvider =({children})=>{
+
+const [users,setUsers] =useState([
+  { id:"22035",
+  name:"Swear esam",email:"Sewar98@gmail.com",
+  image:"https://student.valuxapps.com/storage/assets/defaults/user.jpg",
+  user_token:"T8cApkdTVFDIUBe5Gl3toyYECV03ZBESuyoGpSrdq74Q6K7uI6siF38TjvNk40E2v3awcB",
+  phone:"0597216078"},
+
+])
+const storeData = async (value) => {
+  try {
+    const jsonValue = JSON.stringify(value)
+    await AsyncStorage.setItem('Token', jsonValue)
+  } catch (e) {
+    // saving error
+  }
+}
+const [currentUser,setCurrentUser] =useState({});
 
 const[MovieData,setMovieData] =useState([
     {
@@ -73,12 +91,31 @@ const[MovieData,setMovieData] =useState([
       },
 ]);
 
+const handleCurrentUser = async(user)=>{  
+setCurrentUser(user);
+try {
+  const jsonValue = JSON.stringify(user)
+  await AsyncStorage.setItem('Token', jsonValue)
+} catch (e) {
+  // saving error
+}
+}
+const handleLogOut = async()=>{
+  setCurrentUser({});
+  try {
+    const jsonValue = JSON.stringify(user)
+    await AsyncStorage.removeItem('Token')
+  } catch (e) {
+    // saving error
+  }
+
+}
 const toggleLike =(id)=>{
     let tempArr = [...MovieData];  
     let index = tempArr.findIndex(el => el.id == id);
     tempArr[index].like = !tempArr[index].like; 
     setMovieData(tempArr)                 
-    console.log(tempArr);
+    // console.log(tempArr);
  }; 
 
   const handleSav = id => {
@@ -86,7 +123,7 @@ const toggleLike =(id)=>{
   let index = tempArr.findIndex(el => el.id == id);
   tempArr[index].saved = !tempArr[index].saved;
   setMovieData(tempArr);
-  console.log(tempArr);
+  // console.log(tempArr);
 };
 //
   const deleteFromFav =(item)=>{
@@ -94,11 +131,11 @@ const toggleLike =(id)=>{
   let index = tempArr.findIndex(el => el.id == item.id);
   tempArr[index].saved = !tempArr[index].saved;
   setMovieData(tempArr);
-  console.log(tempArr);
+  // console.log(tempArr);
 }
 
  return(
-    <AppContext.Provider value={{MovieData,setMovieData,toggleLike,handleSav,deleteFromFav}} >
+    <AppContext.Provider value={{handleLogOut,currentUser,handleCurrentUser,users,setUsers,MovieData,setMovieData,toggleLike,handleSav,deleteFromFav}} >
     {children}
     </AppContext.Provider>
   )

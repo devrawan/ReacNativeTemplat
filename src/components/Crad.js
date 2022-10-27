@@ -39,6 +39,7 @@ const Card = props => {
             color={props.item.like == true ? 'red' : 'white'}></AntDesign>
         </TouchableOpacity>
     </TouchableOpacity>
+    
   );
 };
 

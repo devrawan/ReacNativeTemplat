@@ -32,16 +32,16 @@ const MainScreen = () => {
   const {colors, dark} = useTheme();
   const {width, height} = useWindowDimensions();
   const navigation = useNavigation();
-  const {MovieData, setMovieData, toggleLike} = useContext(AppContext);
+  const {MovieData, setMovieData, toggleLike,currentUser} = useContext(AppContext);
   const [searchInput, setSearchInput] = useState('');
   const [sResult, setSResult] = useState();
 
 
   const handleSearch = txt => {
+    console.log({currentUser})
     let tempArr = [...MovieData];
     let index = tempArr.findIndex(el => el.title == txt);
     setSResult(tempArr[index]);
-    
   };
 
   const renderItem = ({item}) => {return <Card item={item} />};
@@ -83,7 +83,7 @@ const MainScreen = () => {
             //   Authorization:'hNmhyE8y1bxeLleWTiJK7sBxEE7FszONugbCuqu3mojGUiIBZEIvnpMjmuO1mtirlSQfyo'
             // }) .then((res)=>
             // console.log(res.headers))      
-            console.log(response);
+            // console.log(response);
             handleSearch(searchInput);
             setSearchInput('');
           }}
